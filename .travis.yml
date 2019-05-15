@@ -1,7 +1,7 @@
 #install: gradle wrapper --gradle-version 5.1.1
 env:
   global:
-    - CC_TEST_REPORTER_ID=6728d7a9a1ed449e33455dbff8d8b4b8024b7afe9aee4208144cd8c6fdefa1db
+    - CC_TEST_REPORTER_ID=8b9d78a19bed1ccf125d32a07fcbf455c5d887e45ac0bf5d5e74c0fe2c647831
 install: ./gradlew assemble
 language: java
 jdk:
@@ -18,6 +18,6 @@ script:
   - ./gradlew build
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build --debug --exit-code $TRAVIS_TEST_RESULT
 notifications:
   slack: kalium-alkalio:TKKbLCQK8wW6HLPGfrGWyKUS
