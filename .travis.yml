@@ -19,5 +19,4 @@ script:
 
 after_script:
   - ./cc-test-reporter after-build --debug --exit-code $TRAVIS_TEST_RESULT
-notifications:
-  slack: kalium-alkalio:TKKbLCQK8wW6HLPGfrGWyKUS
+
