@@ -9,19 +9,14 @@ jdk:
   - openjdk8
 
 before_script:
-  - chmod a+x gradlew
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+    - chmod a+x gradlew
 
 script:
-  - ./gradlew build
+  - ./gradlew build check
+  - ./gradlew codeCoverageReport
 
-after_script:
-  - ./cc-test-reporter format-coverage --debug JACOCO_SOURCE_PATH=src/main/java/io/alkal/kalium ./cc-test-reporter \
-  --input-type jacoco --exit-code $TRAVIS_TEST_RESULT
-  
-  - ./cc-test-reporter upload-coverage
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 
 
